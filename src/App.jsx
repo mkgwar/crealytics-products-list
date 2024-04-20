@@ -1,7 +1,12 @@
 import "./App.css";
+import Header from "./components/Header";
 
 function App() {
-  return <></>;
+  return (
+    <section className="w-full h-screen">
+      <Header />
+    </section>
+  );
 }
 
 export default App;
