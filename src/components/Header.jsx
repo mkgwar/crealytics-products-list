@@ -12,7 +12,7 @@ const Header = () => {
           className="border-2 border-black px-2 h-12 outline-none w-full"
           placeholder="Type to search..."
         />
-        <button className="h-12 bg-black text-xs-white px-4">search</button>
+        {/* <button className="h-12 bg-black text-xs-white px-4">search</button> */}
       </div>
     </header>
   );
