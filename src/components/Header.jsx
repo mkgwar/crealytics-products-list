@@ -1,23 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useGlobalContext from "../hooks/useGlobalContext";
 
 const Header = () => {
-  const { searchString, setSearchString, filterData, setCurrentPage } =
-    useGlobalContext();
+  const [searchString, setSearchString] = useState("");
+
+  const { filterData } = useGlobalContext();
 
   const handleInputChange = (event) => {
-    const value = event.target.value;
-    setSearchString(value);
-    setCurrentPage(0);
-    filterData(value, 0);
+    setSearchString(event.target.value);
+    filterData(event.target.value);
   };
 
   return (
-    <header className="relative border-b-4 border-black py-4 flex justify-center items-center">
-      <h1 className="logo absolute left-4 top-1/2 -translate-y-1/2 bottom-4 text-bold-upper text-2xl flex items-center">
-        Crealytics
-      </h1>
-      <div className="search w-2/5 flex items-center">
+    <header className="border-b-4 border-black py-4 flex justify-center items-center">
+      <div className="search w-4/5 flex items-center">
         <input
           type="text"
           className="border-2 border-black px-2 h-12 outline-none w-full"
@@ -25,7 +21,6 @@ const Header = () => {
           value={searchString}
           onChange={handleInputChange}
         />
-        {/* <button className="h-12 bg-black text-xs-white px-4">search</button> */}
       </div>
     </header>
   );

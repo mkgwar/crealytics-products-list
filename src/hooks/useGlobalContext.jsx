@@ -6,37 +6,30 @@ const GlobalContext = createContext({});
 
 export const GlobalContextWrapper = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
-  const [searchString, setSearchString] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
 
   const { data } = useProductData();
 
-  const filterData = (filterString, current) => {
-    const startIndex = current * 100;
-    const tempFilteredData = [];
+  const filterData = (filterString) => {
+    let tempFilteredData = [];
 
-    let i = startIndex;
-
-    while (i < data.length && tempFilteredData.length < 100) {
-      if (data[i].title.toLowerCase().includes(filterString.toLowerCase())) {
-        tempFilteredData.push(data[i]);
-      }
-
-      i += 1;
-    }
+    if (filterString.trim()) {
+      tempFilteredData = data.filter((product) =>
+        product.title.toLowerCase().includes(filterString.toLowerCase())
+      );
+    } else tempFilteredData = data;
 
     setFilteredData(tempFilteredData);
+    setCurrentPage(0);
   };
 
   useEffect(() => {
-    if (data) filterData("", 0);
+    if (data.length) setFilteredData(data);
   }, [data]);
 
   const store = {
     filteredData,
     setFilteredData,
-    searchString,
-    setSearchString,
     filterData,
     currentPage,
     setCurrentPage,

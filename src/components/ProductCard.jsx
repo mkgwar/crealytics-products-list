@@ -12,7 +12,7 @@ import React from "react";
 
 export const ProductCard = ({ data }) => {
   return (
-    <div className="w-full rounded overflow-hidden">
+    <div className="md:h-[300px] h-[225px] w-full rounded overflow-hidden">
       <div className="relative image-background bg-gray-200 w-full aspect-video">
         <div className="bg-black py-1 px-2 text-xs-white absolute right-0">
           {data.gender}
