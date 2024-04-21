@@ -21,15 +21,15 @@ export const ProductCard = ({ data }) => {
       </div>
       <h1 className="uppercase text-xs font-bold mt-2">{data.title}</h1>
       <div className="font-semibold mt-3">
-        {data.price === data.sale_price ? (
-          <span>{data.price}</span>
-        ) : (
+        {data.sale_price < data.price ? (
           <>
             <span className="line-through mr-2 text-gray-600">
               {data.price}
             </span>
             <span className="text-red-600">{data.sale_price}</span>
           </>
+        ) : (
+          <span>{data.price}</span>
         )}
       </div>
     </div>

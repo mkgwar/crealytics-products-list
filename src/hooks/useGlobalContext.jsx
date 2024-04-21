@@ -7,17 +7,45 @@ const GlobalContext = createContext({});
 export const GlobalContextWrapper = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [genderFilter, setGenderFilter] = useState("");
+  const [onSaleFilter, setOnSaleFilter] = useState(false);
+  const [searchString, setSearchString] = useState("");
 
   const { data } = useProductData();
 
-  const filterData = (filterString) => {
+  const filterDataGender = (value) =>
+    filterData(searchString, value, onSaleFilter);
+
+  const filterDataOnSale = (value) =>
+    filterData(searchString, genderFilter, value);
+
+  const filterData = (filterString, gender, onSale) => {
     let tempFilteredData = [];
 
-    if (filterString.trim()) {
+    if (gender && onSale) {
+      tempFilteredData = data.filter(
+        (product) =>
+          product.title.toLowerCase().includes(filterString.toLowerCase()) &&
+          product.gender === gender &&
+          product.sale_price < product.price
+      );
+    } else if (gender) {
+      tempFilteredData = data.filter(
+        (product) =>
+          product.title.toLowerCase().includes(filterString.toLowerCase()) &&
+          product.gender === gender
+      );
+    } else if (onSale) {
+      tempFilteredData = data.filter(
+        (product) =>
+          product.title.toLowerCase().includes(filterString.toLowerCase()) &&
+          product.sale_price < product.price
+      );
+    } else {
       tempFilteredData = data.filter((product) =>
         product.title.toLowerCase().includes(filterString.toLowerCase())
       );
-    } else tempFilteredData = data;
+    }
 
     setFilteredData(tempFilteredData);
     setCurrentPage(0);
@@ -33,6 +61,14 @@ export const GlobalContextWrapper = ({ children }) => {
     filterData,
     currentPage,
     setCurrentPage,
+    filterDataGender,
+    filterDataOnSale,
+    genderFilter,
+    setGenderFilter,
+    onSaleFilter,
+    setOnSaleFilter,
+    searchString,
+    setSearchString,
   };
 
   return (

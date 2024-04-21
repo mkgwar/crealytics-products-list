@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import useGlobalContext from "../hooks/useGlobalContext";
 
 const Header = () => {
-  const [searchString, setSearchString] = useState("");
-
-  const { filterData } = useGlobalContext();
+  const {
+    filterData,
+    searchString,
+    setSearchString,
+    genderFilter,
+    onSaleFilter,
+  } = useGlobalContext();
 
   const handleInputChange = (event) => {
     setSearchString(event.target.value);
-    filterData(event.target.value);
+    filterData(event.target.value, genderFilter, onSaleFilter);
   };
 
   return (
