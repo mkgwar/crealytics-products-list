@@ -27,7 +27,8 @@ export const GlobalContextWrapper = ({ children }) => {
         (product) =>
           product.title.toLowerCase().includes(filterString.toLowerCase()) &&
           product.gender === gender &&
-          product.sale_price < product.price
+          parseFloat(product.sale_price?.split(" ")[0]) <
+            parseFloat(product.price?.split(" ")[0])
       );
     } else if (gender) {
       tempFilteredData = data.filter(
@@ -39,7 +40,8 @@ export const GlobalContextWrapper = ({ children }) => {
       tempFilteredData = data.filter(
         (product) =>
           product.title.toLowerCase().includes(filterString.toLowerCase()) &&
-          product.sale_price < product.price
+          parseFloat(product.sale_price?.split(" ")[0]) <
+            parseFloat(product.price?.split(" ")[0])
       );
     } else {
       tempFilteredData = data.filter((product) =>

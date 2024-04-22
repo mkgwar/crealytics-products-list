@@ -24,6 +24,7 @@ const Header = () => {
           placeholder="Type to search..."
           value={searchString}
           onChange={handleInputChange}
+          data-testid="search-field"
         />
       </div>
     </header>

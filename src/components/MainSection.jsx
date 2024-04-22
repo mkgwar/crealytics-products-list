@@ -16,7 +16,7 @@ const MainSection = () => {
   };
 
   return (
-    <main className="h-full overflow-y-auto">
+    <main className="w-full h-full overflow-y-auto">
       {filteredData.length ? (
         <div className="h-full flex flex-col justify-between">
           <div className="h-full grow w-full grid md:grid-cols-4 grid-cols-2 gap-2 overflow-y-auto p-4">

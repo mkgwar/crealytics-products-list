@@ -17,7 +17,6 @@ const ResetSection = () => {
   };
 
   const handleOnSaleSelection = () => {
-    console.log(!onSaleFilter);
     filterDataOnSale(!onSaleFilter);
     setOnSaleFilter(!onSaleFilter);
   };
@@ -34,6 +33,7 @@ const ResetSection = () => {
           className="px-2 py-1 bg-white border-2 border-black"
           onChange={handleGenderSelection}
           value={genderFilter}
+          data-testid="gender-select"
         >
           <option value="">None</option>
           <option value="male">Male</option>
@@ -48,6 +48,7 @@ const ResetSection = () => {
           className="h-4 aspect-square"
           checked={onSaleFilter}
           onChange={handleOnSaleSelection}
+          data-testid="onSale-check"
         />
         <label htmlFor="sale" className="text-bold-upper text-xs">
           On sale

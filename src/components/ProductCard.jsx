@@ -12,21 +12,35 @@ import React from "react";
 
 export const ProductCard = ({ data }) => {
   return (
-    <div className="md:h-[300px] h-[225px] w-full rounded overflow-hidden">
+    <div
+      className="md:h-[300px] h-[225px] w-full rounded overflow-hidden"
+      data-testid="product-card"
+    >
       <div className="relative image-background bg-gray-200 w-full aspect-video">
-        <div className="bg-black py-1 px-2 text-xs-white absolute right-0">
+        <div
+          className="bg-black py-1 px-2 text-xs-white absolute right-0"
+          data-testid="product-gender"
+        >
           {data.gender}
         </div>
         <img src={data.image_link} />
       </div>
-      <h1 className="uppercase text-xs font-bold mt-2">{data.title}</h1>
+      <h1
+        className="uppercase text-xs font-bold mt-2"
+        data-testid="product-title"
+      >
+        {data.title}
+      </h1>
       <div className="font-semibold mt-3">
-        {data.sale_price < data.price ? (
+        {parseFloat(data.sale_price?.split(" ")[0]) <
+        parseFloat(data.price?.split(" ")[0]) ? (
           <>
             <span className="line-through mr-2 text-gray-600">
               {data.price}
             </span>
-            <span className="text-red-600">{data.sale_price}</span>
+            <span className="text-red-600" data-testid="product-onSale">
+              {data.sale_price}
+            </span>
           </>
         ) : (
           <span>{data.price}</span>
