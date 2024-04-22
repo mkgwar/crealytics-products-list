@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
-// {
-//     "title": "Pepe Jeans ZINC Jeans Tapered Fit ga4",
-//     "gtin": "8434341886214",
-//     "gender": "male",
-//     "sale_price": "74.95 EUR",
-//     "price": "99.95 EUR",
-//     "image_link": "https://mosaic01.ztat.net/vgs/media/large/PE/12/2G/06/KK/11/PE122G06K-K11@12.jpg",
-//     "additional_image_link": "https://mosaic01.ztat.net/vgs/media/large/PE/12/2G/06/KK/11/PE122G06K-K11@11.jpg, https://mosaic01.ztat.net/vgs/media/large/PE/12/2G/06/KK/11/PE122G06K-K11@10.jpg, https://mosaic01.ztat.net/vgs/media/large/PE/12/2G/06/KK/11/PE122G06K-K11@9.jpg, https://mosaic01.ztat.net/vgs/media/large/PE/12/2G/06/KK/11/PE122G06K-K11@8.jpg, https://mosaic01.ztat.net/vgs/media/large/PE/12/2G/06/KK/11/PE122G06K-K11@7.jpg"
-//   }
+const image_link = `https://picsum.photos/id/${Math.floor(
+  Math.random() * 300 + 1
+)}/400/225`;
+
+const additional_image_link = [
+  image_link,
+  `https://picsum.photos/id/${Math.floor(Math.random() * 300 + 1)}/400/225`,
+  `https://picsum.photos/id/${Math.floor(Math.random() * 300 + 1)}/400/225`,
+  `https://picsum.photos/id/${Math.floor(Math.random() * 300 + 1)}/400/225`,
+];
 
 export const ProductCard = ({ data }) => {
+  const [currImgLink, setCurrImgLink] = useState(image_link);
+
   return (
     <div
-      className="md:h-[300px] h-[225px] w-full rounded overflow-hidden"
+      className="md:h-[300px] h-[250px] w-full rounded overflow-hidden"
       data-testid="product-card"
     >
       <div className="relative image-background bg-gray-200 w-full aspect-video">
@@ -23,7 +26,7 @@ export const ProductCard = ({ data }) => {
         >
           {data.gender}
         </div>
-        <img src={data.image_link} />
+        <img src={currImgLink} className="w-full h-full object-cover " />
       </div>
       <h1
         className="uppercase text-xs font-bold mt-2"
@@ -45,6 +48,24 @@ export const ProductCard = ({ data }) => {
         ) : (
           <span>{data.price}</span>
         )}
+      </div>
+      <div className="flex gap-1 mt-4">
+        {additional_image_link.map((link) => {
+          return (
+            <div
+              key={link}
+              className={`h-8 aspect-square bg-gray-200 cursor-pointer ${
+                currImgLink === link ? "border-2 border-red-500" : ""
+              }`}
+            >
+              <img
+                src={link}
+                className="w-full h-full object-cover"
+                onClick={() => setCurrImgLink(link)}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

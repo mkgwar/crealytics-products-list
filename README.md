@@ -1,9 +1,10 @@
 # Crealytics Product List
 
 - A small web app which displays all the products matching the user search criteria.
-- Typing in the search box will give autocomplete suggestions.
+- Typing in the search box will show products matching the criteria dynamically.
 - 100 products will be displayed per page.
-- Products are expandable. They will show additional images when clicked. (**404 Error: Images are not being loaded at this point.**)
+- Since the image links present in products.csv are not working, random images have been used instead.
+- All additional images will be displayed in the bottom. Clicking on them will show the image on the main area.
 - We can also filter the search result according to **Gender** and whether the products are **On Sale** or not.
 
 ## How to Run
