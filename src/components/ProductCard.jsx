@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 
-const image_link = `https://picsum.photos/id/${Math.floor(
-  Math.random() * 300 + 1
-)}/400/225`;
+const image_link = "https://picsum.photos/id/200/400/225";
 
 const additional_image_link = [
   image_link,
-  `https://picsum.photos/id/${Math.floor(Math.random() * 300 + 1)}/400/225`,
-  `https://picsum.photos/id/${Math.floor(Math.random() * 300 + 1)}/400/225`,
-  `https://picsum.photos/id/${Math.floor(Math.random() * 300 + 1)}/400/225`,
+  "https://picsum.photos/id/201/400/225",
+  "https://picsum.photos/id/202/400/225",
+  "https://picsum.photos/id/203/400/225",
 ];
 
 export const ProductCard = ({ data }) => {
@@ -26,7 +24,12 @@ export const ProductCard = ({ data }) => {
         >
           {data.gender}
         </div>
-        <img src={currImgLink} className="w-full h-full object-cover " />
+        <img
+          src={currImgLink}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <h1
         className="uppercase text-xs font-bold mt-2 ml-2"
@@ -60,6 +63,8 @@ export const ProductCard = ({ data }) => {
             >
               <img
                 src={link}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
                 onClick={() => setCurrImgLink(link)}
               />
