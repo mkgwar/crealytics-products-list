@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const image_link = "https://picsum.photos/id/200/400/225";
+const image_link = "https://picsum.photos/id/64/800/450";
 
 const additional_image_link = [
   image_link,
-  "https://picsum.photos/id/201/400/225",
-  "https://picsum.photos/id/202/400/225",
-  "https://picsum.photos/id/203/400/225",
+  "https://picsum.photos/id/66/800/450",
+  "https://picsum.photos/id/96/800/450",
+  "https://picsum.photos/id/103/800/450",
 ];
 
 export const ProductCard = ({ data }) => {
