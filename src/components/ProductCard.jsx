@@ -16,7 +16,7 @@ export const ProductCard = ({ data }) => {
 
   return (
     <div
-      className="md:h-[300px] h-[250px] w-full rounded overflow-hidden"
+      className="h-[300px] w-full rounded overflow-hidden bg-white shadow"
       data-testid="product-card"
     >
       <div className="relative image-background bg-gray-200 w-full aspect-video">
@@ -29,12 +29,12 @@ export const ProductCard = ({ data }) => {
         <img src={currImgLink} className="w-full h-full object-cover " />
       </div>
       <h1
-        className="uppercase text-xs font-bold mt-2"
+        className="uppercase text-xs font-bold mt-2 ml-2"
         data-testid="product-title"
       >
         {data.title}
       </h1>
-      <div className="font-semibold mt-3">
+      <div className="font-semibold mt-3 ml-2">
         {parseFloat(data.sale_price?.split(" ")[0]) <
         parseFloat(data.price?.split(" ")[0]) ? (
           <>
@@ -49,7 +49,7 @@ export const ProductCard = ({ data }) => {
           <span>{data.price}</span>
         )}
       </div>
-      <div className="flex gap-1 mt-4">
+      <div className="flex gap-1 mt-4 ml-2">
         {additional_image_link.map((link) => {
           return (
             <div

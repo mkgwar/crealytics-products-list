@@ -16,23 +16,23 @@ const MainSection = () => {
   };
 
   return (
-    <main className="w-full h-full overflow-y-auto">
+    <main className="w-full h-full overflow-y-auto bg-gray-100">
       {filteredData.length ? (
         <div className="h-full flex flex-col justify-between">
-          <div className="h-full grow w-full grid md:grid-cols-4 grid-cols-2 gap-2 overflow-y-auto p-4">
+          <div className="h-full grow w-full grid md:grid-cols-4 grid-cols-2 gap-4 overflow-y-auto p-4">
             {filteredData.slice(BEG_INDEX, END_INDEX).map((product) => (
               <ProductCard data={product} key={product.gtin} />
             ))}
           </div>
           <div
-            className="flex items-center justify-end p-4"
+            className="flex items-center justify-end p-4 bg-white border-t-4 border-black "
             onClick={handlePageNumberClick}
           >
             {[...Array(PAGE_COUNT).keys()].map((page) => {
               return (
                 <div
-                  className={`text-sm w-8 aspect-square flex items-center justify-center cursor-pointer hover:bg-black hover:text-white ${
-                    currentPage === page ? "bg-black text-white" : "bg-gray-100"
+                  className={`text-sm w-8 font-semibold aspect-square flex items-center justify-center cursor-pointer hover:bg-black hover:text-white ${
+                    currentPage === page ? "bg-black text-white" : "bg-gray-200"
                   }`}
                   key={page}
                   data-value={page}
